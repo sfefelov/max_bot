@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:4.0
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "37017:27017" # <-- Внешний порт изменён на 37017, внутренний (27017) остался прежним
+    # network_mode: service:bot # Опционально: если нужно, чтобы mongo и bot были в одной сети как один сервис
+
+  bot:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    environment:
+      BOT_TOKEN: ${BOT_TOKEN}
+      MONGODB_URI: mongodb://mongo:27017 # <-- Это НЕ МЕНЯЕТСЯ, так как указывает на имя сервиса 'mongo' и его внутренний порт 27017
+      DB_NAME: ${DB_NAME}
+      DB_DELETE_NAME: ${DB_DELETE_NAME}
+      PORT: ${PORT}
+    ports:
+      - "4444:4444" # Порт бота остается без изменений
+#    volumes:
+#      - "./src:/usr/src/app/node_modules/@maxhub/max-bot-api/dist"
+    #   - .:/usr/src/app
+    dns:
+     - 8.8.8.8
+     - 1.1.1.1
+volumes:
+  mongo_data: # Исправлено имя тома (убрана точка, точки не рекомендуются в именах томов)
+

@@ -1,0 +1,22 @@
+{
+  "name": "max-bot-docker",
+  "version": "1.0.0",
+  "description": "MAX Bot with MongoDB in Docker",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@maxhub/max-bot-api": "file:./libs/max-bot-api-client-ts",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongodb": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.5",
+    "@types/node": "^20.10.0"
+  },
+  "keywords": ["max", "bot", "docker", "mongodb"],
+  "author": "sfefelov",
+  "license": "MIT"
+}
