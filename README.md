@@ -1,15 +1,16 @@
 # max_bot
 Bot for messenger MAX
+
 Alma-fast-start.sh - быстрый старт на AlmaLinux
 Бот для мессенджера макс для Docker c базой телефонов и идентификаторами чата в базе mongodb
 
 Для установки достаточно склонировать себе в папку
-#git clone git@github.com:sfefelov/max_bot.git
+$git clone git@github.com:sfefelov/max_bot.git
 
 Далее в файлик .env вбить правильный токен и выполнить
-#docker compose up --build
+$docker compose up --build
 После сборки и запуска контейнеров зайти в бота по ссылке и дать команду /start или /hello
 бот предложит поделиться номером телефона на что нужно согласиться.
 
 После чего вы сможете слать сообщения по номеру через обращение например:
-#curl http://<ip-srv>:4444/?to=79999999999&text=test
+$curl http://<ip-srv>:4444/?to=79999999999&text=test
